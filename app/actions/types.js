@@ -1,0 +1,1 @@
+export const MORTGAGE_UPDATE = 'MORTGAGE_UPDATE';
