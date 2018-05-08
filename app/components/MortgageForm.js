@@ -7,9 +7,7 @@ import { NumberFormatPc } from './FormattedInputs/NumberFormatPc';
 import { NumberFormatYears } from './FormattedInputs/NumberFormatYears';
 import { CustomSwitch } from './CustomSwitch';
 
-import './Mortgage.scss';
-
-export const Mortgage = ({data, onChange, onBlur}) => {
+export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
   const downPaymentPcOptions = [
     {value: 0.05, label: '5%'},
     {value: 0.10, label: '10%'},
@@ -28,26 +26,19 @@ export const Mortgage = ({data, onChange, onBlur}) => {
     {value: 30, label: '30'}
   ];
 
-  return <Paper className="mortgage-component">
+  console.log(isActive);
+  return <Paper elevation={isActive ? 16 : 2}>
     <List>
       <ListItem>
-        <TextField
-          className="mortgage-component-field"
-          id="askingPrice"
-          name="askingPrice"
-          label="asking price"
-          value={data.askingPrice || ''}
-          onBlur={() => onBlur()}
-          onChange={event => onChange({askingPrice: event.target.value})}
-          InputProps={{
-            inputComponent: NumberFormatCurrency,
-          }} />
+        <Typography variant="title">
+          Scenario {data.id}
+        </Typography>
       </ListItem>
       <ListItem>
         {data.downPaymentMode === 'pc' ?
           <TextField
-            className="mortgage-component-field-half"
             select
+            fullWidth
             id="downPaymentPc"
             name="downPaymentPc"
             label="down payment"
@@ -69,7 +60,7 @@ export const Mortgage = ({data, onChange, onBlur}) => {
             }
           </TextField> :
           <TextField
-            className="mortgage-component-field-half"
+            fullWidth
             id="downPayment"
             name="downPayment"
             label="down payment"
@@ -92,12 +83,15 @@ export const Mortgage = ({data, onChange, onBlur}) => {
       <ListItem>
         <div>
           <Typography variant="body2">Total Mortgage Required</Typography>
-          <NumberFormatCurrency value={data.totalRequired || 0} displayType={'text'}/>
+          <NumberFormatCurrency
+            value={data.totalRequired || 0}
+            displayType={'text'}
+            renderText={value => <Typography color="primary" variant="title">{value}</Typography>}/>
         </div>
       </ListItem>
       <ListItem>
         <TextField
-          className="mortgage-component-field"
+          fullWidth
           select
           id="amortization"
           name="amortization"
@@ -117,7 +111,7 @@ export const Mortgage = ({data, onChange, onBlur}) => {
       </ListItem>
       <ListItem>
         <TextField
-          className="mortgage-component-field"
+          fullWidth
           id="rate"
           name="rate"
           label="Mortgage Rate"
@@ -131,20 +125,28 @@ export const Mortgage = ({data, onChange, onBlur}) => {
       <ListItem>
         <div>
           <Typography variant="body2">Total Mortgage Payment</Typography>
-          <NumberFormatCurrency value={data.totalPayment || 0} displayType={'text'}/>
+          <NumberFormatCurrency
+            value={data.totalPayment || 0}
+            displayType={'text'}
+            renderText={value => <Typography color="primary" variant="title">{value}</Typography>}/>
         </div>
       </ListItem>
       <ListItem>
         <div>
           <Typography variant="body2">Total Interest</Typography>
-          <NumberFormatCurrency value={data.totalInterest || 0} displayType={'text'}/>
+          <NumberFormatCurrency
+            value={data.totalInterest || 0}
+            displayType={'text'}
+            renderText={value => <Typography color="primary" variant="title">{value}</Typography>}
+          />
         </div>
       </ListItem>
     </List>
   </Paper>;
 };
-Mortgage.propTypes = {
+MortgageForm.propTypes = {
   data: PMortgageData,
   onChange: PropTypes.func,
-  onBlur: PropTypes.func
+  onBlur: PropTypes.func,
+  isActive: PropTypes.bool
 };

@@ -1,34 +1,50 @@
 import * as actions from './types';
 
+export function setActiveScenario(id) {
+  return(dispatch, getState) => {
+    if(getState().mortgage.activeScenario === id) {
+      return;
+    }
+
+    dispatch({type: actions.MORTGAGE_UPDATE_ACTIVE_SCENARIO, payload: id});
+  };
+}
+
 export function update(data) {
   return (dispatch, getState) => {
-    dispatch({type: actions.MORTGAGE_UPDATE, payload: data});
-
-    const { mortgage } = getState();
-    if(mortgage.askingPrice && mortgage.rate && mortgage.amortization) {
-      dispatch(recalculate());
+    if(data.hasOwnProperty('askingPrice')) {
+      dispatch({type: actions.MORTGAGE_UPDATE_ASKING_PRICE, payload: data.askingPrice});
+      getState().mortgage.scenarios.forEach(scenario => dispatch(recalculate(scenario.id)));
+    } else {
+      dispatch({type: actions.MORTGAGE_UPDATE_SCENARIO, payload: data});
+      dispatch(recalculate(data.id));
     }
   };
 }
 
-export function recalculate() {
+export function recalculate(scenarioId) {
   return (dispatch, getState) => {
-    const updated = computedValues(getState().mortgage);
-    dispatch({type: actions.MORTGAGE_UPDATE, updated});
+    const { mortgage } = getState();
+    const mortgageItem = mortgage.scenarios.find(scenario => scenario.id === scenarioId);
+    if(!mortgage.askingPrice || !mortgageItem.rate || !mortgageItem.amortization) {
+      return;
+    }
+    const updated = computedValues(mortgage.askingPrice, mortgageItem);
+    dispatch({type: actions.MORTGAGE_UPDATE_SCENARIO, payload: updated});
   };
 }
 
-function computedValues(data) {
+function computedValues(askingPrice, data) {
   const getDownPaymentPc = () => {
     data.downPaymentPc = data.askingPrice && data.downPayment ?
-      Math.round(100 * data.downPayment / data.askingPrice) / 100 : data.downPaymentPc;
+      Math.round(100 * data.downPayment / askingPrice) / 100 : data.downPaymentPc;
   };
   const getDownPaymentAbs = () => {
-    data.downPayment = data.askingPrice && data.downPaymentPc ?
-      Math.round(100 * data.downPaymentPc * data.askingPrice) / 100 : data.downPayment;
+    data.downPayment = askingPrice && data.downPaymentPc ?
+      Math.round(100 * data.downPaymentPc * askingPrice) / 100 : data.downPayment;
   };
   const getDownPayment = () => {
-    if(!data.askingPrice) {
+    if(!askingPrice) {
       return;
     }
     if(data.downPaymentMode === 'pc') {
@@ -41,8 +57,8 @@ function computedValues(data) {
     if(!data.downPayment) {
       return;
     }
-    data.totalRequired = data.askingPrice && data.downPayment ?
-      data.askingPrice - data.downPayment : null;
+    data.totalRequired = askingPrice && data.downPayment ?
+      askingPrice - data.downPayment : null;
   };
   const getPeriodRate = () => {
     if(!data.rate || !data.period || !data.amortization) {
