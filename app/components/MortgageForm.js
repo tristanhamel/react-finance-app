@@ -6,6 +6,7 @@ import { NumberFormatCurrency } from './FormattedInputs/NumberFormatCurrency';
 import { NumberFormatPc } from './FormattedInputs/NumberFormatPc';
 import { NumberFormatYears } from './FormattedInputs/NumberFormatYears';
 import { CustomSwitch } from './CustomSwitch';
+import Localized from './localization/Localized';
 
 export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
   const downPaymentPcOptions = [
@@ -26,7 +27,6 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
     {value: 30, label: '30'}
   ];
 
-  console.log(isActive);
   return <Paper elevation={isActive ? 16 : 2}>
     <List>
       <ListItem>
@@ -41,7 +41,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
             fullWidth
             id="downPaymentPc"
             name="downPaymentPc"
-            label="down payment"
+            label={<Localized>DOWN_PAYMENT</Localized>}
             value={data.downPaymentPc || ''}
             onBlur={() => onBlur()}
             onChange={event => onChange({downPaymentPc: event.target.value})}
