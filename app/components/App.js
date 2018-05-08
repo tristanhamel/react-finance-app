@@ -5,6 +5,7 @@ import { Router } from 'react-router-dom';
 import Routes from '../routes';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { CustomAppBar } from './CustomAppBar';
 
 const theme = createMuiTheme(
   {
@@ -27,16 +28,7 @@ const theme = createMuiTheme(
 
 export const App = ({history}) => (
   <MuiThemeProvider theme={theme}>
-    <AppBar>
-      <Toolbar>
-        <IconButton color="inherit" aria-label="Menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="title" color="inherit">
-          Title
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <CustomAppBar />
     <div className="main-container">
       <Router history={history}>
         { Routes }
