@@ -82,7 +82,9 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
       </ListItem>
       <ListItem>
         <div>
-          <Typography variant="body2">Total Mortgage Required</Typography>
+          <Typography variant="body2">
+            <Localized>TOTAL_MORTGAGE</Localized>
+          </Typography>
           <NumberFormatCurrency
             value={data.totalRequired || 0}
             displayType={'text'}
@@ -95,7 +97,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
           select
           id="amortization"
           name="amortization"
-          label="Amortization Period"
+          label={<Localized>AMORTIZATION_PERIOD</Localized>}
           value={data.amortization || ''}
           onBlur={() => onBlur()}
           onChange={event => onChange({amortization: event.target.value})}
@@ -104,7 +106,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
           }}>
           {amortizationOptions.map(option => (
             <MenuItem key={option.label + 'years'} value={option.value}>
-              {option.label} years
+              {option.label}  &nbsp; <Localized>YEARS</Localized>
             </MenuItem>
           ))}
         </TextField>
@@ -114,7 +116,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
           fullWidth
           id="rate"
           name="rate"
-          label="Mortgage Rate"
+          label={<Localized>MORTGAGE_RATE</Localized>}
           value={data.rate || ''}
           onBlur={() => onBlur()}
           onChange={event => onChange({rate: event.target.value})}
@@ -124,7 +126,9 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
       </ListItem>
       <ListItem>
         <div>
-          <Typography variant="body2">Total Mortgage Payment</Typography>
+          <Typography variant="body2">
+            <Localized>TOTAL_MORTGAGE_PAYMENT</Localized>
+          </Typography>
           <NumberFormatCurrency
             value={data.totalPayment || 0}
             displayType={'text'}
@@ -133,7 +137,9 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
       </ListItem>
       <ListItem>
         <div>
-          <Typography variant="body2">Total Interest</Typography>
+          <Typography variant="body2">
+            <Localized>TOTAL_INTEREST</Localized>
+          </Typography>
           <NumberFormatCurrency
             value={data.totalInterest || 0}
             displayType={'text'}
