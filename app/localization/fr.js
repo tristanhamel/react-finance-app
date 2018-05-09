@@ -7,5 +7,6 @@ export default {
   MORTGAGE_RATE: `taux d'emprunt`,
   TOTAL_MORTGAGE_PAYMENT: 'montant total du prêt',
   TOTAL_INTEREST: 'total des intérêts',
-  YEARS: 'ans'
+  YEARS: 'ans',
+  MONTHLY_PAYMENT: 'mensualité'
 };

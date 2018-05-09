@@ -126,7 +126,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
       </ListItem>
       <ListItem>
         <div>
-          <Typography variant="body2">
+          <Typography variant="caption">
             <Localized>TOTAL_MORTGAGE_PAYMENT</Localized>
           </Typography>
           <NumberFormatCurrency
@@ -134,14 +134,24 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
             displayType={'text'}
             renderText={value => <Typography color="primary" variant="title">{value}</Typography>}/>
         </div>
-      </ListItem>
-      <ListItem>
-        <div>
-          <Typography variant="body2">
+        <div style={{paddingLeft: '2rem'}}>
+          <Typography variant="caption">
             <Localized>TOTAL_INTEREST</Localized>
           </Typography>
           <NumberFormatCurrency
             value={data.totalInterest || 0}
+            displayType={'text'}
+            renderText={value => <Typography color="primary" variant="title">{value}</Typography>}
+          />
+        </div>
+      </ListItem>
+      <ListItem>
+        <div>
+          <Typography variant="body2">
+            <Localized>MONTHLY_PAYMENT</Localized>
+          </Typography>
+          <NumberFormatCurrency
+            value={data.annuity || 0}
             displayType={'text'}
             renderText={value => <Typography color="primary" variant="title">{value}</Typography>}
           />
