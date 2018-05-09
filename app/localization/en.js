@@ -12,5 +12,6 @@ export default {
   CANCEL: 'Cancel',
   OK: 'Ok',
   ARE_YOU_SURE: 'Are you sure?',
-  CONFIRM_RESET: `All the changes you've made will be deleted.`
+  CONFIRM_RESET: `All the changes you've made will be deleted.`,
+  SCENARIO_TITLE: 'Name of the Scenario'
 };

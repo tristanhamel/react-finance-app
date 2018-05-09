@@ -7,6 +7,7 @@ import { NumberFormatPc } from './FormattedInputs/NumberFormatPc';
 import { NumberFormatYears } from './FormattedInputs/NumberFormatYears';
 import { CustomSwitch } from './CustomSwitch';
 import Localized from './localization/Localized';
+import { EditableText } from './EditableText';
 
 export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
   const downPaymentPcOptions = [
@@ -30,9 +31,14 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
   return <Paper elevation={isActive ? 16 : 2}>
     <List>
       <ListItem>
-        <Typography variant="title">
-          {data.name}
-        </Typography>
+        <EditableText
+          text={data.name}
+          onConfirm={name => onChange({name})}
+          title={<Localized>SCENARIO_TITLE</Localized>}>
+          <Typography variant="title">
+            {data.name}
+          </Typography>
+        </EditableText>
       </ListItem>
       <ListItem>
         {data.downPaymentMode === 'pc' ?
