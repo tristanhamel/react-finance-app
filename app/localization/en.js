@@ -8,5 +8,9 @@ export default {
   TOTAL_MORTGAGE_PAYMENT: 'total mortgage payment',
   TOTAL_INTEREST: 'total interest',
   YEARS: 'years',
-  MONTHLY_PAYMENT: 'monthly payment'
+  MONTHLY_PAYMENT: 'monthly payment',
+  CANCEL: 'Cancel',
+  OK: 'Ok',
+  ARE_YOU_SURE: 'Are you sure?',
+  CONFIRM_RESET: `All the changes you've made will be deleted.`
 };

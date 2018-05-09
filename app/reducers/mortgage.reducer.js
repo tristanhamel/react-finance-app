@@ -6,6 +6,7 @@ export const initialState = {
   displayAs: 'tiles',
   scenarios: [1, 2, 3].map((i) => ({
     id: i,
+    name: `Scenario ${i}`,
     totalPayment: null,
     totalInterest: null,
     rate: null,

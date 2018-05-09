@@ -9,6 +9,8 @@ import { Grid } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import { MortgageAskingPrice } from '../components/MortgageAskingPrice';
 import { MortgageTools } from '../components/MortgageTools';
+import { ConfirmationDialog } from '../components/ConfirmationDialog';
+import Localized from '../components/localization/Localized';
 
 const styles = theme => ({
   root: {
@@ -21,60 +23,89 @@ const styles = theme => ({
   },
 });
 
-const MortgageContainer = ({
-  mortgageData,
-  updateMortgageData,
-  recalculateMortgageData,
-  setActiveScenario,
-  displayAsTiles,
-  displayAsTable,
-  resetAll,
-  print
-}) => {
-  const hiddenValues = ['xsDown', 'smDown'];
-  const scenarioHiddenProperty = mortgageData.scenarios
-    .reduce((map, scenario) => {
-      if(scenario.id === mortgageData.activeScenario) {
-        return map;
-      }
-      return {
-        ...map,
-        [scenario.id]: {[hiddenValues.shift()]: true}
-      };
-    }, {[mortgageData.activeScenario]: {}});
+class MortgageContainer extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      deleteConfirmationOpened: false
+    };
+  }
 
-  return <div>
-    <Grid container spacing={16}>
-      <Grid item xs={12}>
-        <MortgageTools
-          onDisplayAsTable={() => displayAsTable()}
-          onDisplayAsTiles={() => displayAsTiles()}
-          onReset={() => resetAll()}
-          onPrint={() => print()}
-        />
+  onReset() {
+    this.setState({deleteConfirmationOpened: true});
+  }
+
+  onConfirmReset() {
+    this.setState({deleteConfirmationOpened: false});
+    this.props.resetAll();
+  }
+
+  onCancelReset() {
+    this.setState({deleteConfirmationOpened: false});
+  }
+
+  render() {
+    const {
+      mortgageData,
+      updateMortgageData,
+      recalculateMortgageData,
+      setActiveScenario,
+      displayAsTiles,
+      displayAsTable,
+      print
+    } = this.props;
+    const hiddenValues = ['xsDown', 'smDown'];
+    const scenarioHiddenProperty = mortgageData.scenarios
+      .reduce((map, scenario) => {
+        if (scenario.id === mortgageData.activeScenario) {
+          return map;
+        }
+        return {
+          ...map,
+          [scenario.id]: {[hiddenValues.shift()]: true}
+        };
+      }, {[mortgageData.activeScenario]: {}});
+
+    return <div>
+      <Grid container spacing={16}>
+        <Grid item xs={12}>
+          <MortgageTools
+            onDisplayAsTable={() => displayAsTable()}
+            onDisplayAsTiles={() => displayAsTiles()}
+            onReset={() => this.onReset()}
+            onPrint={() => print()}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <MortgageAskingPrice
+            askingPrice={mortgageData.askingPrice}
+            onChange={data => updateMortgageData(data)}
+          />
+        </Grid>
+        {mortgageData.scenarios.map(scenarioData => {
+          return <Grid
+            item xs={12} sm={6} md={4}
+            hidden={scenarioHiddenProperty[scenarioData.id]}
+            key={scenarioData.id}
+            onClick={() => setActiveScenario(scenarioData.id)}>
+            <MortgageForm
+              data={scenarioData}
+              isActive={mortgageData.activeScenario === scenarioData.id}
+              onChange={data => updateMortgageData({...data, id: scenarioData.id})}
+              onBlur={() => recalculateMortgageData(scenarioData.id)}/>
+          </Grid>;
+        })}
       </Grid>
-      <Grid item xs={12}>
-        <MortgageAskingPrice
-          askingPrice={mortgageData.askingPrice}
-          onChange={data => updateMortgageData(data)}
-        />
-      </Grid>
-      {mortgageData.scenarios.map(scenarioData => {
-        return <Grid
-          item xs={12} sm={6} md={4}
-          hidden={scenarioHiddenProperty[scenarioData.id]}
-          key={scenarioData.id}
-          onClick={() => setActiveScenario(scenarioData.id)}>
-          <MortgageForm
-            data={scenarioData}
-            isActive={mortgageData.activeScenario === scenarioData.id}
-            onChange={data => updateMortgageData({...data, id: scenarioData.id})}
-            onBlur={() => recalculateMortgageData(scenarioData.id)}/>
-        </Grid>;
-      })}
-    </Grid>
-  </div>;
-};
+      <ConfirmationDialog
+        onCancel={() => this.onCancelReset()}
+        onConfirm={() => this.onConfirmReset()}
+        title={<Localized>ARE_YOU_SURE</Localized>}
+        open={this.state.deleteConfirmationOpened}>
+        <Localized>CONFIRM_RESET</Localized>
+      </ConfirmationDialog>
+    </div>;
+  }
+}
 MortgageContainer.propTypes = {
   mortgageData: PMortgageData,
   updateMortgageData: PropTypes.func,

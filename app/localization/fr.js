@@ -8,5 +8,9 @@ export default {
   TOTAL_MORTGAGE_PAYMENT: 'montant total du prêt',
   TOTAL_INTEREST: 'total des intérêts',
   YEARS: 'ans',
-  MONTHLY_PAYMENT: 'mensualité'
+  MONTHLY_PAYMENT: 'mensualité',
+  CANCEL: 'Annuler',
+  OK: 'Ok',
+  ARE_YOU_SURE: 'Êtes-vous sûr?',
+  CONFIRM_RESET: 'Tous vos changements vont être effacés.'
 };

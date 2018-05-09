@@ -31,7 +31,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
     <List>
       <ListItem>
         <Typography variant="title">
-          Scenario {data.id}
+          {data.name}
         </Typography>
       </ListItem>
       <ListItem>
