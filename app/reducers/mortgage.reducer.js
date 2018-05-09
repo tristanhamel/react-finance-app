@@ -3,6 +3,7 @@ import * as actions from '../actions/types';
 export const initialState = {
   askingPrice: null,
   activeScenario: 1,
+  displayAs: 'tiles',
   scenarios: [1, 2, 3].map((i) => ({
     id: i,
     totalPayment: null,
@@ -39,6 +40,15 @@ export const mortgageReducer = (state = initialState, {type, payload}) => {
           .map(item => item.id === payload.id ? {...item, ...payload} : item)
       };
     }
+
+    case actions.MORTGAGE_RESET: {
+      return initialState;
+    }
+
+    case actions.MORTGAGE_DISPLAY_AS: {
+      return {...state, displayAs: payload};
+    }
+
     default:
       return initialState;
   }

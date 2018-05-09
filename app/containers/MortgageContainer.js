@@ -8,6 +8,7 @@ import { PMortgageData } from '../proptypes';
 import { Grid } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import { MortgageAskingPrice } from '../components/MortgageAskingPrice';
+import { MortgageTools } from '../components/MortgageTools';
 
 const styles = theme => ({
   root: {
@@ -20,7 +21,16 @@ const styles = theme => ({
   },
 });
 
-const MortgageContainer = ({mortgageData, updateMortgageData, recalculateMortgageData, setActiveScenario}) => {
+const MortgageContainer = ({
+  mortgageData,
+  updateMortgageData,
+  recalculateMortgageData,
+  setActiveScenario,
+  displayAsTiles,
+  displayAsTable,
+  resetAll,
+  print
+}) => {
   const hiddenValues = ['xsDown', 'smDown'];
   const scenarioHiddenProperty = mortgageData.scenarios
     .reduce((map, scenario) => {
@@ -35,6 +45,14 @@ const MortgageContainer = ({mortgageData, updateMortgageData, recalculateMortgag
 
   return <div>
     <Grid container spacing={16}>
+      <Grid item xs={12}>
+        <MortgageTools
+          onDisplayAsTable={() => displayAsTable()}
+          onDisplayAsTiles={() => displayAsTiles()}
+          onReset={() => resetAll()}
+          onPrint={() => print()}
+        />
+      </Grid>
       <Grid item xs={12}>
         <MortgageAskingPrice
           askingPrice={mortgageData.askingPrice}
@@ -61,7 +79,11 @@ MortgageContainer.propTypes = {
   mortgageData: PMortgageData,
   updateMortgageData: PropTypes.func,
   recalculateMortgageData: PropTypes.func,
-  setActiveScenario: PropTypes.func
+  setActiveScenario: PropTypes.func,
+  displayAsTable: PropTypes.func,
+  displayAsTiles: PropTypes.func,
+  print: PropTypes.func,
+  resetAll: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -72,7 +94,11 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   updateMortgageData: data => dispatch(actions.mortgage.update(data)),
   recalculateMortgageData: scenarioId => dispatch(actions.mortgage.recalculate(scenarioId)),
-  setActiveScenario: scenarioId => dispatch(actions.mortgage.setActiveScenario(scenarioId))
+  setActiveScenario: scenarioId => dispatch(actions.mortgage.setActiveScenario(scenarioId)),
+  displayAsTable: () => dispatch(actions.mortgage.displayAs('table')),
+  displayAsTiles: () => dispatch(actions.mortgage.displayAs('tiles')),
+  print: () => dispatch(actions.mortgage.print()),
+  resetAll: () => dispatch(actions.mortgage.reset())
 });
 
 export default withStyles(styles)(connect(

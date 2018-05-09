@@ -134,3 +134,21 @@ function computedValues(askingPrice, data) {
   getTotalInterest();
   return data;
 }
+
+export function displayAs(as) {
+  return (dispatch, getState) => {
+    if(getState().mortgage.displayAs !== as) {
+      dispatch({type: actions.MORTGAGE_DISPLAY_AS, payload: as});
+    }
+  }
+}
+
+export function print() {
+  return (dispatch, getState) => {};
+}
+
+export function reset() {
+  return (dispatch, getState) => {
+    dispatch({type: actions.MORTGAGE_RESET});
+  }
+}
