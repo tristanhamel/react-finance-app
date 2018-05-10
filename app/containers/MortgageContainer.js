@@ -53,7 +53,8 @@ class MortgageContainer extends React.Component {
       setActiveScenario,
       displayAsTiles,
       displayAsTable,
-      print
+      print,
+      updateTableOptions
     } = this.props;
     const hiddenValues = ['xsDown', 'smDown'];
     const scenarioHiddenProperty = mortgageData.scenarios
@@ -101,7 +102,11 @@ class MortgageContainer extends React.Component {
             <MortgageTable
               data={mortgageData.scenarios}
               onChange={data => updateMortgageData(data)}
-              onBlur={(scenarioId) => recalculateMortgageData(scenarioId)}/>
+              onBlur={(scenarioId) => recalculateMortgageData(scenarioId)}
+              activeScenario={mortgageData.activeScenario}
+              onSetActiveScenario ={id => setActiveScenario(id)}
+              tableOptions={mortgageData.tableOptions}
+              onChangeTableOptions={options => updateTableOptions(options)}/>
           </Grid>
         }
       </Grid>
@@ -123,7 +128,8 @@ MortgageContainer.propTypes = {
   displayAsTable: PropTypes.func,
   displayAsTiles: PropTypes.func,
   print: PropTypes.func,
-  resetAll: PropTypes.func
+  resetAll: PropTypes.func,
+  updateTableOptions: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -138,7 +144,8 @@ const mapDispatchToProps = (dispatch) => ({
   displayAsTable: () => dispatch(actions.mortgage.displayAs('table')),
   displayAsTiles: () => dispatch(actions.mortgage.displayAs('tiles')),
   print: () => dispatch(actions.mortgage.print()),
-  resetAll: () => dispatch(actions.mortgage.reset())
+  resetAll: () => dispatch(actions.mortgage.reset()),
+  updateTableOptions: options => dispatch(actions.mortgage.setTableOptions(options))
 });
 
 export default withStyles(styles)(connect(

@@ -140,7 +140,7 @@ export function displayAs(as) {
     if(getState().mortgage.displayAs !== as) {
       dispatch({type: actions.MORTGAGE_DISPLAY_AS, payload: as});
     }
-  }
+  };
 }
 
 export function print() {
@@ -148,7 +148,13 @@ export function print() {
 }
 
 export function reset() {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch({type: actions.MORTGAGE_RESET});
-  }
+  };
+}
+
+export function setTableOptions(options) {
+  return (dispatch) => {
+    dispatch({type: actions.MORTGAGE_UPDATE_TABLE_OPTIONS, payload: options});
+  };
 }

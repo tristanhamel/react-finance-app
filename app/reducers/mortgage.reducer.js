@@ -4,6 +4,14 @@ export const initialState = {
   askingPrice: null,
   activeScenario: 1,
   displayAs: 'tiles',
+  tableOptions: {
+    visibleColumns: [
+      'totalRequired',
+      'totalPayment',
+      'totalInterest',
+      'annuity'
+    ]
+  },
   scenarios: [1, 2, 3].map((i) => ({
     id: i,
     name: `Scenario ${i}`,
@@ -48,6 +56,10 @@ export const mortgageReducer = (state = initialState, {type, payload}) => {
 
     case actions.MORTGAGE_DISPLAY_AS: {
       return {...state, displayAs: payload};
+    }
+
+    case actions.MORTGAGE_UPDATE_TABLE_OPTIONS: {
+      return {...state, tableOptions: {...state.tableOptions, ...payload}};
     }
 
     default:
