@@ -6,19 +6,19 @@ import TableIcon from '@material-ui/icons/GridOn';
 import TilesIcon from '@material-ui/icons/Apps';
 import PrintIcon from '@material-ui/icons/Print';
 
-export const MortgageTools = ({onReset, onDisplayAsTable, onDisplayAsTiles, onPrint}) => {
+export const MortgageTools = ({onReset, onDisplayAsTable, onDisplayAsTiles, onPrint, displayAs}) => {
   return <div>
     <IconButton
       onClick={() => onDisplayAsTiles()}
       variant="fab"
-      color="default"
+      color={displayAs === 'tiles' ? 'primary' : 'default'}
       aria-label="tiles">
       <TilesIcon/>
     </IconButton>
     <IconButton
       onClick={() => onDisplayAsTable()}
       variant="fab"
-      color="default"
+      color={displayAs === 'table' ? 'primary' : 'default'}
       aria-label="tiles">
       <TableIcon/>
     </IconButton>
@@ -43,4 +43,5 @@ MortgageTools.propTypes = {
   onDisplayAsTable: PropTypes.func,
   onDisplayAsTiles: PropTypes.func,
   onPrint: PropTypes.func,
+  displayAs: PropTypes.string
 };

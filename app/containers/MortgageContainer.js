@@ -11,6 +11,7 @@ import { MortgageAskingPrice } from '../components/MortgageAskingPrice';
 import { MortgageTools } from '../components/MortgageTools';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import Localized from '../components/localization/Localized';
+import { MortgageTable } from '../components/MortgageTable';
 
 const styles = theme => ({
   root: {
@@ -74,6 +75,7 @@ class MortgageContainer extends React.Component {
             onDisplayAsTiles={() => displayAsTiles()}
             onReset={() => this.onReset()}
             onPrint={() => print()}
+            displayAs={mortgageData.displayAs}
           />
         </Grid>
         <Grid item xs={12}>
@@ -82,7 +84,7 @@ class MortgageContainer extends React.Component {
             onChange={data => updateMortgageData(data)}
           />
         </Grid>
-        {mortgageData.scenarios.map(scenarioData => {
+        {mortgageData.displayAs === 'tiles' ? mortgageData.scenarios.map(scenarioData => {
           return <Grid
             item xs={12} sm={6} md={4}
             hidden={scenarioHiddenProperty[scenarioData.id]}
@@ -94,7 +96,14 @@ class MortgageContainer extends React.Component {
               onChange={data => updateMortgageData({...data, id: scenarioData.id})}
               onBlur={() => recalculateMortgageData(scenarioData.id)}/>
           </Grid>;
-        })}
+        }) :
+          <Grid item xs={12}>
+            <MortgageTable
+              data={mortgageData.scenarios}
+              onChange={data => updateMortgageData(data)}
+              onBlur={(scenarioId) => recalculateMortgageData(scenarioId)}/>
+          </Grid>
+        }
       </Grid>
       <ConfirmationDialog
         onCancel={() => this.onCancelReset()}
