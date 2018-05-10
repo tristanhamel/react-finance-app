@@ -1,28 +1,46 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { IconButton, Select, Input, MenuItem, Checkbox, ListItemText } from 'material-ui';
+import { IconButton, Menu, MenuItem, Checkbox } from 'material-ui';
 import ColumnIcon from '@material-ui/icons/ViewColumn';
 import Localized from './localization/Localized';
 
-export const TableColumnsPicker = ({options, visibleColumns, onPick}) => {
-  return <React.Fragment>
-    <Select
-      multiple
-      value={visibleColumns}
-      onChange={e => onPick(e.target.value)}
-      input={<Input id="select-multiple-checkbox" />}
-      renderValue={() => <IconButton><ColumnIcon/></IconButton>}>
-      {options.map(option => (
-        <MenuItem
-          key={option.value}
-          value={option.value}>
-          <Checkbox checked={visibleColumns.includes(option.value)} />
-          <Localized>{option.label}</Localized>
-        </MenuItem>
-      ))}
-    </Select>
-  </React.Fragment>;
-};
+export class TableColumnsPicker extends React.Component {
+  constructor() {
+    super();
+    this.state = {opened: false};
+  }
+
+  toggle() {
+    this.setState({opened: !this.state.opened});
+  }
+
+  handlePick(item) {
+    if(this.props.visibleColumns.includes(item)) {
+      this.props.onPick(this.props.visibleColumns.filter(i => i !== item));
+    } else {
+      this.props.onPick([...this.props.visibleColumns, item]);
+    }
+  }
+
+  render() {
+    const {options, visibleColumns} = this.props;
+    return <React.Fragment>
+      <IconButton onClick={() => this.toggle()}><ColumnIcon/></IconButton>
+      <Menu
+        open={this.state.opened}
+        onClose={() => this.toggle()}>
+        {options.map(option => (
+          <MenuItem
+            onClick={() => this.handlePick(option.value)}
+            key={option.value}>
+            <Checkbox checked={visibleColumns.includes(option.value)}/>
+            <Localized>{option.label}</Localized>
+          </MenuItem>
+        ))}
+      </Menu>
+    </React.Fragment>;
+  }
+}
 TableColumnsPicker.propTypes = {
   options: PropTypes.array,
   visibleColumns: PropTypes.array,
