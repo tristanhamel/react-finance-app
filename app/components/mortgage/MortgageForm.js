@@ -64,6 +64,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
       </ListItem>
       <ListItem>
         <MortgageAmortizationPeriod
+          withLabel={true}
           value={data.amortization}
           onChange={amortization => onChange({amortization})}
           onBlur={() => onBlur}/>
@@ -71,6 +72,7 @@ export const MortgageForm = ({data, onChange, onBlur, isActive}) => {
       <ListItem>
         <MortgageRate
           value={data.rate}
+          withLabel={true}
           onChange={rate => onChange({rate})}
           onBlur={() => onBlur()}
         />

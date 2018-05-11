@@ -63,6 +63,6 @@ export const mortgageReducer = (state = initialState, {type, payload}) => {
     }
 
     default:
-      return initialState;
+      return state;
   }
 };
