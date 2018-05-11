@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Paper, TextField, ListItem, List } from 'material-ui';
-import { NumberFormatCurrency } from './FormattedInputs/NumberFormatCurrency';
-import Localized from './localization/Localized';
+import { NumberFormatCurrency } from '../FormattedInputs/NumberFormatCurrency';
+import Localized from '../localization/Localized';
 
 export const MortgageAskingPrice = ({askingPrice, onChange}) => {
   return (

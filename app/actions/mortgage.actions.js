@@ -101,6 +101,7 @@ function computedValues(askingPrice, data) {
       const paidPrincipal = data.annuity - paidInterest;
       const remainingPrincipal = Math.max(0, last.remainingPrincipal - paidPrincipal);
       const updated = [...schedule, {
+        remainingPeriods,
         remainingPrincipal,
         paidPrincipal,
         paidInterest,

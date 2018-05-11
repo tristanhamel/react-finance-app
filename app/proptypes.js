@@ -10,6 +10,7 @@ export const PMortgageData = PropTypes.shape({
   downPaymentPc: PropTypes.number,
   downPaymentMode: PropTypes.oneOf(['pc', 'currency']),
   askingPrice: PropTypes.number,
+  scenarios: PropTypes.array
 });
 
 const questionCategories = [

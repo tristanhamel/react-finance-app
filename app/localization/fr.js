@@ -13,5 +13,7 @@ export default {
   OK: 'Ok',
   ARE_YOU_SURE: 'Êtes-vous sûr?',
   CONFIRM_RESET: 'Tous vos changements vont être effacés.',
-  SCENARIO_TITLE: 'Nom du Scenario'
+  SCENARIO_TITLE: 'Nom du Scenario',
+  PRINCIPAL: 'Principal',
+  INTERESTS: 'Interêts'
 };

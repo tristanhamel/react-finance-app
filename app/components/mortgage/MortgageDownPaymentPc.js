@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { TextField, MenuItem } from 'material-ui';
-import { NumberFormatPc } from './FormattedInputs/NumberFormatPc';
-import Localized from './localization/Localized';
+import { NumberFormatPc } from '../FormattedInputs/NumberFormatPc';
+import Localized from '../localization/Localized';
 
 export const MortgageDownPaymentPc = ({value, onBlur, onChange, withLabel }) => {
   const downPaymentPcOptions = [

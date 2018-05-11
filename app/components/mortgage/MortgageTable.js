@@ -3,13 +3,13 @@ import React from 'react';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import ChartIcon from '@material-ui/icons/ShowChart';
 import { Paper, IconButton } from 'material-ui';
-import { EditableText } from './EditableText';
-import Localized from './localization/Localized';
+import { EditableText } from '../EditableText';
+import Localized from '../localization/Localized';
 import { MortgageDownPaymentPc } from './MortgageDownPaymentPc';
-import { NumberFormatCurrency } from './FormattedInputs/NumberFormatCurrency';
+import { NumberFormatCurrency } from '../FormattedInputs/NumberFormatCurrency';
 import { MortgageAmortizationPeriod } from './MortgageAmortizationPeriod';
 import { MortgageRate } from './MortgageRate';
-import { TableColumnsPicker } from './TableColumnsPicker';
+import { TableColumnsPicker } from '../TableColumnsPicker';
 
 export const MortgageTable = ({data, onChange, onBlur, activeScenario, onSetActiveScenario, tableOptions, onChangeTableOptions}) => {
   const columnsOptions = [

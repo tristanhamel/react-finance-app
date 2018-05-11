@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Paper, TextField, Typography, List, ListItem} from 'material-ui';
-import { PMortgageData } from '../proptypes';
-import { NumberFormatCurrency } from './FormattedInputs/NumberFormatCurrency';
-import { CustomSwitch } from './CustomSwitch';
-import Localized from './localization/Localized';
-import { EditableText } from './EditableText';
+import { PMortgageData } from '../../proptypes';
+import { NumberFormatCurrency } from '../FormattedInputs/NumberFormatCurrency';
+import { CustomSwitch } from '../CustomSwitch';
+import Localized from '../localization/Localized';
+import { EditableText } from '../EditableText';
 import { MortgageDownPaymentPc } from './MortgageDownPaymentPc';
 import { MortgageAmortizationPeriod } from './MortgageAmortizationPeriod';
 import { MortgageRate } from './MortgageRate';

@@ -13,5 +13,7 @@ export default {
   OK: 'Ok',
   ARE_YOU_SURE: 'Are you sure?',
   CONFIRM_RESET: `All the changes you've made will be deleted.`,
-  SCENARIO_TITLE: 'Name of the Scenario'
+  SCENARIO_TITLE: 'Name of the Scenario',
+  PRINCIPAL: 'Principal',
+  INTERESTS: 'Interests'
 };

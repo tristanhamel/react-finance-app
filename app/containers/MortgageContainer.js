@@ -3,15 +3,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import actions from '../actions';
 import selectors from '../selectors';
-import { MortgageForm } from '../components/MortgageForm';
+import { MortgageForm } from '../components/mortgage/MortgageForm';
 import { PMortgageData } from '../proptypes';
 import { Grid } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
-import { MortgageAskingPrice } from '../components/MortgageAskingPrice';
+import { MortgageAskingPrice } from '../components/mortgage/MortgageAskingPrice';
 import { MortgageTools } from '../components/MortgageTools';
 import { ConfirmationDialog } from '../components/ConfirmationDialog';
 import Localized from '../components/localization/Localized';
-import { MortgageTable } from '../components/MortgageTable';
+import { MortgageTable } from '../components/mortgage/MortgageTable';
+import { MortgageChartContainer } from '../components/charts/MortgageChartContainer';
 
 const styles = theme => ({
   root: {
@@ -54,7 +55,9 @@ class MortgageContainer extends React.Component {
       displayAsTiles,
       displayAsTable,
       print,
-      updateTableOptions
+      updateTableOptions,
+      activeScenario,
+      mortgagePaymentsChartData
     } = this.props;
     const hiddenValues = ['xsDown', 'smDown'];
     const scenarioHiddenProperty = mortgageData.scenarios
@@ -109,6 +112,12 @@ class MortgageContainer extends React.Component {
               onChangeTableOptions={options => updateTableOptions(options)}/>
           </Grid>
         }
+        <Grid item xs={12}>
+          <MortgageChartContainer
+            data={mortgagePaymentsChartData}
+            scenario={activeScenario}
+          />
+        </Grid>
       </Grid>
       <ConfirmationDialog
         onCancel={() => this.onCancelReset()}
@@ -129,12 +138,15 @@ MortgageContainer.propTypes = {
   displayAsTiles: PropTypes.func,
   print: PropTypes.func,
   resetAll: PropTypes.func,
-  updateTableOptions: PropTypes.func
+  updateTableOptions: PropTypes.func,
+  activeScenario: PropTypes.any,
+  mortgagePaymentsChartData: PropTypes.any
 };
 
 const mapStateToProps = (state) => ({
-  mortgageData: state.mortgage
-  // mortgageData: selectors.mortgage.mortgageData(state)
+  mortgageData: state.mortgage,
+  activeScenario: selectors.mortgage.currentScenario(state),
+  mortgagePaymentsChartData: selectors.mortgage.mortgagePaymentsChartData(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

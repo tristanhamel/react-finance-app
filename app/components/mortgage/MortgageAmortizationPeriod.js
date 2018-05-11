@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { NumberFormatYears } from './FormattedInputs/NumberFormatYears';
 import { TextField, MenuItem } from 'material-ui';
-import Localized from './localization/Localized';
+import Localized from '../localization/Localized';
 import { MortgageDownPaymentPc } from './MortgageDownPaymentPc';
 
 export const MortgageAmortizationPeriod = ({value, onChange, onBlur, withLabel}) => {
@@ -23,10 +22,7 @@ export const MortgageAmortizationPeriod = ({value, onChange, onBlur, withLabel})
     label={withLabel ? <Localized>AMORTIZATION_PERIOD</Localized> : null}
     value={value || ''}
     onBlur={() => onBlur()}
-    onChange={event => onChange(event.target.value)}
-    InputProps={{
-      inputComponent: NumberFormatYears,
-    }}>
+    onChange={event => onChange(event.target.value)}>
     {amortizationOptions.map(option => (
       <MenuItem key={option.label + 'years'} value={option.value}>
         {option.label}  &nbsp; <Localized>YEARS</Localized>
