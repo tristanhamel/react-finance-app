@@ -9,7 +9,9 @@ export default (
         key={i}
         exact
         path={route.path}
+        titleLocalizationLabel={route.titleLocalizationLabel}
         component={route.component}/>
     ))}
+    <Route path="/" render={() => <Redirect to="/mortgage_calculator" />}/>
   </Switch>
 );

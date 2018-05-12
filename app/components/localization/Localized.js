@@ -7,7 +7,7 @@ const Localized = ({strings, children}) => {
   return <span>{strings[children]}</span>;
 };
 Localized.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.any,
   strings: PropTypes.any
 };
 

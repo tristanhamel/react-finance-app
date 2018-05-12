@@ -1,9 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography} from 'material-ui';
+import { AppBar, Toolbar, IconButton } from 'material-ui';
 import MenuIcon from '@material-ui/icons/Menu';
 import MainMenu from './MainMenu';
+import { PageTitle } from './PageTitle';
+import { withRouter } from 'react-router-dom';
 
-export class CustomAppBar extends React.Component {
+class AppBarComponent extends React.Component {
   constructor() {
     super();
 
@@ -11,7 +14,6 @@ export class CustomAppBar extends React.Component {
       isMenuVisible: false
     };
   }
-
   toggleMenu() {
     this.setState({isMenuVisible: !this.state.isMenuVisible});
   }
@@ -23,9 +25,7 @@ export class CustomAppBar extends React.Component {
           <IconButton color="inherit" aria-label="Menu">
             <MenuIcon onClick={() => this.toggleMenu()}/>
           </IconButton>
-          <Typography variant="title" color="inherit">
-            Title
-          </Typography>
+          <PageTitle currentPath={this.props.location.pathname}/>
         </Toolbar>
       </AppBar>
       <MainMenu
@@ -35,3 +35,8 @@ export class CustomAppBar extends React.Component {
     </React.Fragment>;
   }
 }
+AppBarComponent.propTypes = {
+  location: PropTypes.any
+};
+
+export const CustomAppBar = withRouter(props => <AppBarComponent {...props}/>);

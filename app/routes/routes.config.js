@@ -10,6 +10,6 @@ export const routes = [
   {
     path: '/compound_calculator',
     component: CompoundContainer,
-    titleLocalizationLabel: 'COMPOUND_INTEREST'
+    titleLocalizationLabel: 'COMPOUND_INTERESTS'
   }
 ];
