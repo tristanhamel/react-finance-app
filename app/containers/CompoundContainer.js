@@ -6,6 +6,8 @@ import selectors from '../selectors';
 import { Grid } from 'material-ui';
 import { withStyles } from 'material-ui/styles/index';
 import { CompoundForm } from '../components/Compound/CompoundForm';
+import { PCompoundData } from '../proptypes';
+import { CompoundChartContainer } from '../components/charts/CompoundChartContainer';
 
 const styles = theme => ({
   root: {
@@ -26,18 +28,29 @@ class CompoundContainer extends React.Component {
   render() {
     return <Grid container spacing={16}>
       <Grid item xs={12}>
-        <CompoundForm />
+        <CompoundForm
+          data={this.props.compoundData}
+          onChange={this.props.updateCompoundData}/>
+      </Grid>
+      <Grid item xs={12}>
+        <CompoundChartContainer data={this.props.compoundChartData}/>
       </Grid>
     </Grid>;
   }
 }
 CompoundContainer.propTypes = {
-
+  compoundData: PCompoundData,
+  updateCompoundData: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  compoundData: selectors.compound.compoundData(state),
+  compoundChartData: selectors.compound.chartData(state)
+});
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  updateCompoundData: data => dispatch(actions.compound.update(data))
+});
 
 export default withStyles(styles)(connect(
   mapStateToProps,

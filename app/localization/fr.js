@@ -20,5 +20,11 @@ export default {
   MISSING_CHART_DATA: `Certaines valeurs sont encore manquantes pour calculer l'échéancier du`,
   MORTGAGE_CALCULATOR: `Calculateur d'emprunt`,
   COMPOUND_INTEREST_CALCULATOR: `Calculateur d'intérêts`,
-  SETTINGS: 'Préférences'
+  SETTINGS: 'Préférences',
+  MONTHLY_CONTRIBUTION: 'Versement mensuel',
+  TOTAL_CONTRIBUTION: 'Versements totaux',
+  TOTAL_COMPOUND: 'Valeur totale au terme',
+  DURATION: 'Durée',
+  INTEREST_RATE: `Taux d'intérêt`,
+  MISSING_COMPOUND_CHART_DATA: 'Certaines valeurs sont encore manquantes pour calculer les intérêts'
 };

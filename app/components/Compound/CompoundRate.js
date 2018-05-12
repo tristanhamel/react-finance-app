@@ -3,28 +3,20 @@ import React from 'react';
 import Localized from '../localization/Localized';
 import { TextField } from 'material-ui';
 import { NumberFormatPc } from '../FormattedInputs/NumberFormatPc';
-import { MortgageDownPaymentPc } from './MortgageDownPaymentPc';
 
-export const MortgageRate = ({value, onBlur, onChange, withLabel, ...other}) => {
+export const CompoundRate = ({value, onChange, ...other}) => {
   return <TextField
     {...other}
-    fullWidth
     id="rate"
     name="rate"
-    label={withLabel ? <Localized>MORTGAGE_RATE</Localized> : null}
+    label={<Localized>INTEREST_RATE</Localized>}
     value={value || ''}
-    onBlur={() => onBlur ? onBlur() : null}
     onChange={event => onChange(event.target.value)}
     InputProps={{
       inputComponent: NumberFormatPc,
     }} />;
 };
-MortgageRate.propTypes = {
+CompoundRate.propTypes = {
   value: PropTypes.number,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  withLabel: PropTypes.bool
-};
-MortgageRate.defaultProps = {
-  withLabel: true
+  onChange: PropTypes.func
 };

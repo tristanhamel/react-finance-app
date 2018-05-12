@@ -20,5 +20,12 @@ export default {
   MISSING_CHART_DATA: 'Some values are missing to be able to recalculate the repayment schedule for',
   MORTGAGE_CALCULATOR: 'Mortgage Calculator',
   COMPOUND_INTEREST_CALCULATOR: 'Compound Interest Calculator',
-  SETTINGS: 'Settings'
+  SETTINGS: 'Settings',
+  MONTHLY_CONTRIBUTION: 'Monthly Contribution',
+  TOTAL_CONTRIBUTION: 'Total contributions',
+  TOTAL_COMPOUND: 'Total value at term',
+  DURATION: 'Duration',
+  INTEREST_RATE: 'Interest rate',
+  MISSING_COMPOUND_CHART_DATA: 'Some values are missing to be able to recalculate the compound interests chart',
+  COMPOUND_INTERESTS: 'Intérêts composés'
 };

@@ -17,7 +17,7 @@ const middleware = routerMiddleware(history);
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['localization']
+  blacklist: ['localization', 'compound']
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

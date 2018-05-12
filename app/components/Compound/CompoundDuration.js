@@ -3,8 +3,8 @@ import React from 'react';
 import { TextField, MenuItem } from 'material-ui';
 import Localized from '../localization/Localized';
 
-export const MortgageAmortizationPeriod = ({value, onChange, onBlur, withLabel}) => {
-  const amortizationOptions = [
+export const CompoundDuration = ({value, onChange, ...other}) => {
+  const options = [
     {value: 5, label: '5'},
     {value: 10, label: '10'},
     {value: 15, label: '15'},
@@ -14,27 +14,21 @@ export const MortgageAmortizationPeriod = ({value, onChange, onBlur, withLabel})
   ];
 
   return <TextField
-    fullWidth
+    {...other}
     select
     id="amortization"
     name="amortization"
-    label={withLabel ? <Localized>AMORTIZATION_PERIOD</Localized> : null}
+    label={<Localized>DURATION</Localized>}
     value={value || ''}
-    onBlur={() => onBlur ? onBlur() : null}
     onChange={event => onChange(event.target.value)}>
-    {amortizationOptions.map(option => (
+    {options.map(option => (
       <MenuItem key={option.label + 'years'} value={option.value}>
         {option.label}  &nbsp; <Localized>YEARS</Localized>
       </MenuItem>
     ))}
   </TextField>;
 };
-MortgageAmortizationPeriod.propTypes = {
+CompoundDuration.propTypes = {
   value: PropTypes.number,
-  onChange: PropTypes.func,
-  onBlur: PropTypes.func,
-  withLabel: PropTypes.bool
-};
-MortgageAmortizationPeriod.defaultProps = {
-  withLabel: true
+  onChange: PropTypes.func
 };
