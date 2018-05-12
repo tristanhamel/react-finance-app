@@ -24,7 +24,7 @@ const MainMenu = ({open, toggle}) => {
       </ListItem>
     </List>
     <List component="nav">
-      <ListItem button component={Link} to="/" onClick={() => toggle()}>
+      <ListItem button component={Link} to="/mortgage_calculator" onClick={() => toggle()}>
         <ListItemText>
           <Localized>
             MORTGAGE_CALCULATOR

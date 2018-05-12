@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router } from 'react-router-dom';
-import Routes from '../routes';
+import { ConnectedRouter } from 'react-router-redux';
+import Routes from '../routes/routes';
 import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { CustomAppBar } from './CustomAppBar';
@@ -15,12 +16,12 @@ const theme = createMuiTheme(
 export const App = ({history}) => (
   <MuiThemeProvider theme={theme}>
     <div className="main-container">
-      <Router history={history}>
+      <ConnectedRouter history={history}>
         <div>
           <CustomAppBar />
           { Routes }
         </div>
-      </Router>
+      </ConnectedRouter>
     </div>
   </MuiThemeProvider>);
 App.propTypes = {

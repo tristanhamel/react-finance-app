@@ -6,7 +6,7 @@ import selectors from '../selectors';
 import { Grid } from 'material-ui';
 import { withStyles } from 'material-ui/styles/index';
 import { CompoundForm } from '../components/Compound/CompoundForm';
-import { PCompoundData } from '../proptypes';
+import { PCompoundData, PCompoundSchedule } from '../proptypes';
 import { CompoundChartContainer } from '../components/charts/CompoundChartContainer';
 
 const styles = theme => ({
@@ -46,6 +46,7 @@ class CompoundContainer extends React.Component {
 }
 CompoundContainer.propTypes = {
   compoundData: PCompoundData,
+  compoundChartData: PCompoundSchedule,
   updateCompoundData: PropTypes.func,
   initSchedule: PropTypes.func
 };
