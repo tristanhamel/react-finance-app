@@ -15,5 +15,10 @@ export default {
   CONFIRM_RESET: `All the changes you've made will be deleted.`,
   SCENARIO_TITLE: 'Name of the Scenario',
   PRINCIPAL: 'Principal',
-  INTERESTS: 'Interests'
+  INTERESTS: 'Interests',
+  CANNOT_DISPLAY_CHART: 'We cannot display the chart just yet',
+  MISSING_CHART_DATA: 'Some values are missing to be able to recalculate the repayment schedule for',
+  MORTGAGE_CALCULATOR: 'Mortgage Calculator',
+  COMPOUND_INTEREST_CALCULATOR: 'Compound Interest Calculator',
+  SETTINGS: 'Settings'
 };

@@ -22,13 +22,13 @@ export const MortgageTools = ({onReset, onDisplayAsTable, onDisplayAsTiles, onPr
       aria-label="tiles">
       <TableIcon/>
     </IconButton>
-    <IconButton
-      onClick={() => onPrint()}
-      variant="fab"
-      color="default"
-      aria-label="tiles">
-      <PrintIcon/>
-    </IconButton>
+    {/*<IconButton*/}
+      {/*onClick={() => onPrint()}*/}
+      {/*variant="fab"*/}
+      {/*color="default"*/}
+      {/*aria-label="tiles">*/}
+      {/*<PrintIcon/>*/}
+    {/*</IconButton>*/}
     <IconButton
       onClick={() => onReset()}
       variant="fab"

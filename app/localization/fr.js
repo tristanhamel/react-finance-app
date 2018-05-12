@@ -15,5 +15,10 @@ export default {
   CONFIRM_RESET: 'Tous vos changements vont être effacés.',
   SCENARIO_TITLE: 'Nom du Scenario',
   PRINCIPAL: 'Principal',
-  INTERESTS: 'Interêts'
+  INTERESTS: 'Interêts',
+  CANNOT_DISPLAY_CHART: 'Nous ne pouvons pas encore générer de graphique',
+  MISSING_CHART_DATA: `Certaines valeurs sont encore manquantes pour calculer l'échéancier du`,
+  MORTGAGE_CALCULATOR: `Calculateur d'emprunt`,
+  COMPOUND_INTEREST_CALCULATOR: `Calculateur d'intérêts`,
+  SETTINGS: 'Préférences'
 };

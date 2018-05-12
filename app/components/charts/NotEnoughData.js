@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Typography, IconButton } from 'material-ui';
+import { Typography } from 'material-ui';
 import ChartIcon from '@material-ui/icons/ShowChart';
+import Localized from '../localization/Localized';
 
 export const NotEnoughData = ({scenario}) => {
   return <div style={{padding: '2rem'}}>
@@ -9,10 +10,12 @@ export const NotEnoughData = ({scenario}) => {
       <ChartIcon/>
     </Typography>
     <Typography variant="headline" color="textSecondary" align="center">
-      We cannot display the chart just yet
+      <Localized>
+        CANNOT_DISPLAY_CHART
+      </Localized>
     </Typography>
     <Typography variant="body1" color="textSecondary" align="center">
-      Some values are missing to be able to recalculate the repayment schedule for {scenario.name}
+      <Localized>MISSING_CHART_DATA</Localized> {scenario.name}
     </Typography>
   </div>;
 };

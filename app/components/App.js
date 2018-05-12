@@ -14,10 +14,12 @@ const theme = createMuiTheme(
 
 export const App = ({history}) => (
   <MuiThemeProvider theme={theme}>
-    <CustomAppBar />
     <div className="main-container">
       <Router history={history}>
-        { Routes }
+        <div>
+          <CustomAppBar />
+          { Routes }
+        </div>
       </Router>
     </div>
   </MuiThemeProvider>);
