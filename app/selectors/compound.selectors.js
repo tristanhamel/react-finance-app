@@ -21,23 +21,25 @@ export const compoundData = createSelector(
 const getDates = createSelector(
   [getCompoundData],
   data => {
-    const { interestPeriod, duration } = data;
-    const totalPeriods = interestPeriod === 'monthly' ? 12 * duration : duration;
-    return interestPeriod === 'monthly' ? getMonthlyDates(totalPeriods) : getYearlyDates(totalPeriods);
+    const { duration } = data;
+    return getYearlyDates(duration);
   }
 );
 
 export const chartData = createSelector(
-  [getSchedule, getDates],
-  (schedule, dates) => {
+  [getCompoundData, getSchedule, getDates],
+  (data, schedule, dates) => {
     if(!schedule || !schedule.length) {
       return null;
     }
     return schedule
+      .filter((item, i) => {
+        return data.interestPeriod === 'monthly' ? i % 12 === 0 : true;
+      })
       .map((item, i) => ({
         date: dates[i],
         totalValue: toFloatTwo(item.totalValue),
-        totalInterest: toFloatTwo(item.totalValue),
+        totalInterest: toFloatTwo(item.totalInterest),
         paidInterest: toFloatTwo(item.paidInterest),
         totalContribution: toFloatTwo(item.totalContribution)
       }));

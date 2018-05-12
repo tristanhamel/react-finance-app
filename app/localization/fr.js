@@ -26,5 +26,6 @@ export default {
   TOTAL_COMPOUND: 'Valeur totale au terme',
   DURATION: 'Durée',
   INTEREST_RATE: `Taux d'intérêt`,
-  MISSING_COMPOUND_CHART_DATA: 'Certaines valeurs sont encore manquantes pour calculer les intérêts'
+  MISSING_COMPOUND_CHART_DATA: 'Certaines valeurs sont encore manquantes pour calculer les intérêts',
+  COMPOUND_INTERESTS: 'Intérêts composés'
 };

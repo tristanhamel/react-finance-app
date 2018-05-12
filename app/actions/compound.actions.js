@@ -21,8 +21,11 @@ export function getSchedule() {
   return (dispatch, getState) => {
     const {monthlyContribution, duration, interestPeriod, interestRate } = getState().compound;
     const currentSchedule = getState().compound.schedule;
-    if((!monthlyContribution || ! duration || !interestPeriod) && currentSchedule) {
-      dispatch(update({schedule: null}));
+    if(!monthlyContribution || ! duration || !interestPeriod) {
+      if(currentSchedule) {
+        dispatch(update({schedule: null}));
+      }
+      return;
     }
     const totalPeriods = interestPeriod === 'monthly' ? duration * 12 : duration;
     const periodInterestRate = interestPeriod === 'monthly' ? interestRate / 1200 : interestRate / 100;
@@ -46,9 +49,9 @@ export function getSchedule() {
 
     const seed = {
       remainingPeriods: totalPeriods,
-      totalValue: 500,
+      totalValue: monthlyContribution,
       totalInterest: 0,
-      totalContribution: 500,
+      totalContribution: monthlyContribution,
     };
     const schedule = getScheduleItem([seed]);
     dispatch({type: actions.COMPOUND_UPDATE, payload: {schedule}});

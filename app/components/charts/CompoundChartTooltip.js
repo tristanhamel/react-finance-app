@@ -13,25 +13,14 @@ export const CompoundChartTooltip = ({payload}) => {
     <CardContent>
       <div>
         <Typography color="textSecondary" variant="subheading">
-          <LocalizedDate>
+          <LocalizedDate format={{year: 'numeric'}}>
             {payload[0].payload.date}
           </LocalizedDate>
         </Typography>
       </div>
-      <Typography component="p" style={{color: payload[0].color}}>
-        <Localized>
-          PRINCIPAL
-        </Localized>: &nbsp;
+      <Typography component="p" style={{color: payload[0].fill}}>
         <NumberFormatCurrency
-          value={payload[0].payload.paidPrincipal}
-          displayType={'text'}/>
-      </Typography>
-      <Typography component="p" style={{color: payload[1].color}}>
-        <Localized>
-          INTERESTS
-        </Localized>: &nbsp;
-        <NumberFormatCurrency
-          value={payload[0].payload.paidInterest}
+          value={payload[0].payload.totalValue}
           displayType={'text'}/>
       </Typography>
     </CardContent>

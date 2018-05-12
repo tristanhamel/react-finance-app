@@ -27,5 +27,5 @@ export default {
   DURATION: 'Duration',
   INTEREST_RATE: 'Interest rate',
   MISSING_COMPOUND_CHART_DATA: 'Some values are missing to be able to recalculate the compound interests chart',
-  COMPOUND_INTERESTS: 'Intérêts composés'
+  COMPOUND_INTERESTS: 'Compound Interests'
 };

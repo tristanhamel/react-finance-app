@@ -1,10 +1,9 @@
-export const toLocaleString = (date, lang, customOptions) => {
-  const options = {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    ...customOptions
-  };
+const defaultOptions = {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric'
+};
+export const toLocaleString = (date, lang, options = defaultOptions) => {
   return new Date(date).toLocaleString(lang, options);
 };
 
@@ -48,7 +47,7 @@ export const getBiweeklyDates = (totalPeriods) => {
 };
 
 export const getYearlyDates = (totalPeriods) => {
-  const now = Date.now();
+  const now = new Date;
   const dates = (remainingPeriods, calculated = [now]) => {
     const previousYear = calculated[calculated.length - 1];
     const nextItem = new Date(previousYear.getFullYear() + 1, 0, 1);

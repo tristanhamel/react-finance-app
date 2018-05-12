@@ -25,6 +25,12 @@ class CompoundContainer extends React.Component {
     super();
   }
 
+  componentDidMount() {
+    if(!this.props.compoundChartData) {
+       this.props.initSchedule();
+    }
+  }
+
   render() {
     return <Grid container spacing={16}>
       <Grid item xs={12}>
@@ -40,7 +46,8 @@ class CompoundContainer extends React.Component {
 }
 CompoundContainer.propTypes = {
   compoundData: PCompoundData,
-  updateCompoundData: PropTypes.func
+  updateCompoundData: PropTypes.func,
+  initSchedule: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -49,7 +56,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateCompoundData: data => dispatch(actions.compound.update(data))
+  updateCompoundData: data => dispatch(actions.compound.update(data)),
+  initSchedule: () => dispatch(actions.compound.initSchedule())
 });
 
 export default withStyles(styles)(connect(

@@ -1,6 +1,7 @@
 import * as actions from '../actions/types';
 
 export const initialState = {
+  initialCapital: 0,
   monthlyContribution: 500,
   interestPeriod: 'monthly',
   interestRate: 3,
