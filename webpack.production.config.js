@@ -49,7 +49,8 @@ module.exports = {
       chunkFilename: "[id].css"
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'BASENAME': JSON.stringify('/react-finance-app')
     }),
     new BundleAnalyzerPlugin()
   ],

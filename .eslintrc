@@ -6,6 +6,7 @@
     "mocha": true
   },
   "globals": {
+    "BASENAME": true,
     "Promise": true,
     "expect": true,
     "sinon": true,

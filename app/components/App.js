@@ -6,6 +6,8 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { CustomAppBar } from './CustomAppBar';
 import { palette } from '../theme/palette';
 
+const basename = BASENAME || '/';
+
 const theme = createMuiTheme(
   {
     palette
@@ -15,7 +17,7 @@ const theme = createMuiTheme(
 export const App = ({history}) => (
   <MuiThemeProvider theme={theme}>
     <div className="main-container">
-      <ConnectedRouter history={history}>
+      <ConnectedRouter history={history} basename={basename}>
         <div>
           <CustomAppBar/>
           { Routes }
