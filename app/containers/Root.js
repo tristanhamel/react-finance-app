@@ -1,11 +1,17 @@
-import devRoot from './Root.dev';
-import prodRoot from './Root.prod';
+import PropTypes from 'prop-types';
+import React from 'react';
+import {Provider} from 'react-redux';
+import { hot } from 'react-hot-loader';
+import { App } from '../components/App';
 
-let Root;
-if (process.env.NODE_ENV === 'production') {
-  Root = prodRoot;
-} else {
-  Root = devRoot;
-}
+const Root = ({store, history}) =>
+  <Provider store={store}>
+    <App history={history} />
+  </Provider>;
 
-export default Root;
+Root.propTypes = {
+  store: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
+
+export default hot(module)(Root);
