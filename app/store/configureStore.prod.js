@@ -6,7 +6,9 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { reducers } from '../reducers';
 
-const browserHistory = createBrowserHistory();
+const browserHistory = createBrowserHistory(
+  {basename: BASENAME}
+);
 const middleware = routerMiddleware(history);
 
 const localizationPersistConfig = {

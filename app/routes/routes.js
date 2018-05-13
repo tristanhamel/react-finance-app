@@ -13,5 +13,6 @@ export default (
         component={route.component}/>
     ))}
     <Route path="/" render={() => <Redirect to="/mortgage_calculator" />}/>
+    <Route path="/" render={() => <Redirect to="/mortgage_calculator" />}/>
   </Switch>
 );
