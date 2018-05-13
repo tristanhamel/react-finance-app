@@ -1,4 +1,5 @@
-import { createBrowserHistory } from 'history';
+// import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { routerReducer as routing, routerMiddleware } from 'react-router-redux';
 import  thunk from 'redux-thunk';
@@ -6,8 +7,10 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { reducers } from '../reducers';
 
-const browserHistory = createBrowserHistory(
-  {basename: BASENAME}
+// we need to use hash history to easily deploy to github
+// const browserHistory = createBrowserHistory(
+const browserHistory = createHashHistory(
+  // {basename: BASENAME}
 );
 const middleware = routerMiddleware(history);
 
