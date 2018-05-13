@@ -16,7 +16,7 @@ export const App = ({history}) => (
   <MuiThemeProvider theme={theme}>
     <div className="main-container">
       <ConnectedRouter history={history}>
-        <div>
+        <div style={{maxWidth: '900px', margin: '0 auto'}}>
           <CustomAppBar/>
           { Routes }
         </div>
