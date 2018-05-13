@@ -1,22 +1,29 @@
-import createHistory from 'history/createBrowserHistory';
-import { applyMiddleware, createStore, compose } from 'redux';
-import { routerMiddleware } from 'react-router-redux';
+import { createBrowserHistory } from 'history';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
+import { routerReducer as routing, routerMiddleware } from 'react-router-redux';
 import  thunk from 'redux-thunk';
-import { enableBatching } from 'redux-batched-actions';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { reducers } from '../reducers';
 
-
-import rootReducer from '../reducers';
-import { localizationReducer as localization } from '../reducers/localization.reducer';
-
-export const history = createHistory();
+const browserHistory = createBrowserHistory();
 const middleware = routerMiddleware(history);
+
+const localizationPersistConfig = {
+  key: 'localization',
+  storage: storage,
+  whiteList: ['currentLanguage']
+};
+const rootReducer = combineReducers({
+  ...reducers,
+  routing,
+  localization: persistReducer(localizationPersistConfig, reducers.localization)
+});
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage,
+  blacklist: ['routing']
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -24,8 +31,9 @@ export function configureStore(initialState) {
   const store = createStore(
     persistedReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(thunk, middleware))
+    applyMiddleware(thunk, middleware)
   );
+  const history = browserHistory;
   const persistor = persistStore(store);
-  return {store, persistor};
+  return {store, persistor, history};
 }

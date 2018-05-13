@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import LocalizedDate from '../localization/LocalizedDate';
-import Localized from '../localization/Localized';
-import { Typography, Card, CardContent } from 'material-ui';
+import { Typography, Card, } from 'material-ui';
+import { CardContent } from 'material-ui/Card';
 import { NumberFormatCurrency } from '../FormattedInputs/NumberFormatCurrency';
 
 export const CompoundChartTooltip = ({payload}) => {

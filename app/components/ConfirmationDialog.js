@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Dialog, DialogTitle, DialogActions, DialogContent, Button } from 'material-ui';
+import { Dialog, Button } from 'material-ui';
+import { DialogTitle, DialogActions, DialogContent } from 'material-ui/Dialog';
 import Localized from './localization/Localized';
 
 export const ConfirmationDialog = ({onConfirm, onCancel, title, open, children}) => {

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Paper, TextField, Typography, List, ListItem} from 'material-ui';
+import { Paper, TextField, Typography, List } from 'material-ui';
+import { ListItem } from 'material-ui/List';
 import { PMortgageData } from '../../proptypes';
 import { NumberFormatCurrency } from '../FormattedInputs/NumberFormatCurrency';
 import { CustomSwitch } from '../CustomSwitch';

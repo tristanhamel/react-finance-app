@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Paper, Typography } from 'material-ui';
 import { CompoundChart } from './CompoundChart';
-import { NotEnoughCompoundData } from './NotEnoughCompoundData';
+import { NotEnoughCompoundData } from '../Compound/NotEnoughCompoundData';
 import Localized from '../localization/Localized';
 
 export const CompoundChartContainer = ({data}) => {

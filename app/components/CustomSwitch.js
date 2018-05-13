@@ -2,11 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Switch, Typography } from 'material-ui';
 
-import './CustomSwitch.scss';
-
 export const CustomSwitch = ({right, left, onChange, value}) => {
   return (
-    <div className="custom-switch">
+    <div style={{alignItems: 'center', display: 'flex'}}>
       <Typography>{left.label}</Typography>
       <Switch
         defaultChecked

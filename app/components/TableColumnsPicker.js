@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { IconButton, Menu, MenuItem, Checkbox } from 'material-ui';
+import { IconButton, Menu, Checkbox } from 'material-ui';
+import { MenuItem } from 'material-ui/Menu';
 import ColumnIcon from '@material-ui/icons/ViewColumn';
 import Localized from './localization/Localized';
 

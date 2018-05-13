@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ResponsiveContainer, AreaChart, Area, XAxis, Tooltip } from 'recharts';
+import {ResponsiveContainer, AreaChart, Area, XAxis, Tooltip } from './recharts';
 import React from 'react';
 import { CompoundChartTooltip } from './CompoundChartTooltip';
 import { palette } from '../../theme/palette';

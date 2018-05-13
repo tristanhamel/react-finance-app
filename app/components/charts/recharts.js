@@ -1,0 +1,16 @@
+import ResponsiveContainer from 'recharts/es6/component/ResponsiveContainer';
+export {ResponsiveContainer};
+import Tooltip from 'recharts/es6/component/Tooltip';
+export {Tooltip};
+import AreaChart from 'recharts/es6/chart/AreaChart';
+export {AreaChart};
+import BarChart from 'recharts/es6/chart/BarChart';
+export {BarChart};
+import Area from 'recharts/es6/cartesian/Area';
+export {Area};
+import Bar from 'recharts/es6/cartesian/Bar';
+export {Bar};
+import XAxis from 'recharts/es6/cartesian/XAxis';
+export {XAxis};
+import YAxis from 'recharts/es6/cartesian/YAxis';
+export {YAxis};

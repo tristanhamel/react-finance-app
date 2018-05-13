@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from './recharts';
 import React from 'react';
 import { MortgageChartTooltip } from './MortgageChartTooltip';
 import { palette } from '../../theme/palette';

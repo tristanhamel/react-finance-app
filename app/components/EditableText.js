@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Dialog, DialogContent, DialogActions, DialogTitle, Button, TextField } from 'material-ui';
+import { Dialog, Button, TextField } from 'material-ui';
+import { DialogContent, DialogActions, DialogTitle } from 'material-ui/Dialog';
 import Localized from './localization/Localized';
 
 export class EditableText extends React.Component {

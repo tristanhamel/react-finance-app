@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Paper, List, ListItem, TextField, Typography } from 'material-ui';
+import { Paper, List, TextField, Typography } from 'material-ui';
+import { ListItem } from 'material-ui/List';
 import { NumberFormatCurrency } from '../FormattedInputs/NumberFormatCurrency';
 import { PCompoundData } from '../../proptypes';
 import Localized from '../localization/Localized';

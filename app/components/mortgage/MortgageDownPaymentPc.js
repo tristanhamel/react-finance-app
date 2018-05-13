@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TextField, MenuItem } from 'material-ui';
+import { TextField } from 'material-ui';
+import { MenuItem } from 'material-ui/Menu';
 import { NumberFormatPc } from '../FormattedInputs/NumberFormatPc';
 import Localized from '../localization/Localized';
 

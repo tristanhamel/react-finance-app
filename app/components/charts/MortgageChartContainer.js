@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Paper, Typography } from 'material-ui';
 import { MortgageChart } from './MortgageChart';
-import { NotEnoughData } from './NotEnoughMortgageData';
+import { NotEnoughData } from '../mortgage/NotEnoughMortgageData';
 
 export const MortgageChartContainer = ({data, scenario}) => {
   return <Paper>{data && data.length ?

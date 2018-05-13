@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, ListSubheader } from 'material-ui';
+import { Drawer, List } from 'material-ui';
+import { ListItem, ListItemIcon, ListItemText, ListSubheader } from 'material-ui/List';
 import LanguageIcon from '@material-ui/icons/language';
 import CloseIcon from '@material-ui/icons/close';
 import LocalizationPicker from './localization/LocalizationPicker';
