@@ -1,7 +1,7 @@
 # react-finance-app
 A basic app allowing you to make mortgage and compound interest calculations.
 
-[See the demo](https://tristanhamel.github.io/react-finance-app/mortgage_calculator)
+[See the demo](https://tristanhamel.github.io/react-finance-app)
 
 
 ## installation and usage
